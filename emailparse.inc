@@ -138,6 +138,7 @@ function emailparse_parse_image_parts($parts, $last_insert_id, $entry) {
 
 
 
+
 /**
  * 
  * XXX: Remove double
