@@ -1,0 +1,4 @@
+emailparse_domain = "phoneblogger.me"
+emailparse_database = "mail"
+emailparse_imap_password = "password"
+emailparse_parent = 'userinfo'
