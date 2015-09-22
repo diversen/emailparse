@@ -5,7 +5,7 @@ $LANG = array();
 // Translation of file modules/emailparse/module.php
 
 $LANG['Login or sign up'] = 'Login or sign up';
-$LANG['emailparse_email_added_action'] = 'emailparse_email_added_action';
+$LANG['Email has been added'] = 'Email has been added';
 $LANG['Settings has been updated!'] = 'Settings has been updated!';
 $LANG['Enable email'] = 'Enable email';
 $LANG['Create an email you can send messages to'] = 'Create an email you can send messages to';

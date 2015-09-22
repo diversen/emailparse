@@ -12,6 +12,9 @@ use diversen\layout;
 use diversen\random;
 use diversen\session;
 use diversen\valid;
+use diversen\strings\normalize;
+
+//include_once "modules/emailparse/emailparse.inc";
 
 class module {
     
@@ -32,7 +35,7 @@ class module {
                     html::errors($res);
                 } else {
                     emailparse_create_email();
-                    $message = lang::translate('emailparse_email_added_action');
+                    $message = lang::translate('Email has been added');
                     http::locationHeader('/emailparse/settings', $message);
                 }
             }
@@ -298,4 +301,19 @@ function emailparse_user_info () {
     $str.= html::createLink('/emailparse/edit', lang::translate('Edit from emails'));
     
     return $str;
+}
+
+
+
+/**
+ * 
+ * XXX: Remove double
+ * get all emails as an array from a string
+ * @param string $from
+ * @return array
+ */
+function emailparse_email_from_str($from) {
+    $from_emails = normalize::newlinesToUnix($from);
+    $from_emails = explode("\n", $from_emails);
+    return $from_emails;
 }

@@ -7,10 +7,10 @@ use diversen\file;
 use diversen\imap;
 use diversen\log;
 use diversen\strings;
-use diversen\strings\normalize;
 use diversen\moduleloader;
 
 moduleloader::includeModule('image/ext');
+
 
 
 function emailparse_parse_all_users () {
@@ -23,17 +23,6 @@ function emailparse_parse_all_users () {
     }
 }
 
-
-/**
- * get all emails as an array from a string
- * @param string $from
- * @return array
- */
-function emailparse_email_from_str($from) {
-    $from_emails = normalize::newlinesToUnix($from);
-    $from_emails = explode("\n", $from_emails);
-    return $from_emails;
-}
 
 /**
  * parse a single users emails
@@ -149,12 +138,29 @@ function emailparse_parse_image_parts($parts, $last_insert_id, $entry) {
 
 
 
-self::setCommand('emailparse', array(
-    'description' => "Cron command for emailparse ",
-));
+/**
+ * 
+ * XXX: Remove double
+ * get all emails as an array from a string
+ * @param string $from
+ * @return array
+ */
+function emailparse_email_from_str($from) {
+    $from_emails = normalize::newlinesToUnix($from);
+    $from_emails = explode("\n", $from_emails);
+    return $from_emails;
+}
 
-self::setOption('emailparse_parse_all_users', array(
-    'long_name'   => '--cron',
-    'description' => 'Will import IMAP mails from all users, and put them on the web',
-    'action'      => 'StoreTrue'
-));
+
+if (conf::isCli()) {
+
+    self::setCommand('emailparse', array(
+        'description' => "Cron command for emailparse ",
+    ));
+
+    self::setOption('emailparse_parse_all_users', array(
+        'long_name' => '--cron',
+        'description' => 'Will import IMAP mails from all users, and put them on the web',
+        'action' => 'StoreTrue'
+    ));
+}
