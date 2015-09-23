@@ -6,8 +6,10 @@ use diversen\db;
 use diversen\file;
 use diversen\imap;
 use diversen\log;
-use diversen\strings;
 use diversen\moduleloader;
+use diversen\strings;
+use diversen\strings\normalize;
+
 
 moduleloader::includeModule('image/ext');
 

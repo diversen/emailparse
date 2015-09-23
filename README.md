@@ -71,4 +71,3 @@ edit emailparse/emailparse.ini, and set:
     emailparse_imap_password = 'password'
 
 INSERT INTO `users` (email, password)  values ('mail@phoneblogger.me', encrypt('password') );
-# emailparse
